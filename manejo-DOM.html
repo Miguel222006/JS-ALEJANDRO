@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios DOM</title>
+</head>
+<body>
+    <h1>Ejercicio 1: Lista de Tareas</h1>
+    <input type="text" id="campoTexto" placeholder="Escribe una tarea...">
+    <button id="btnAgregar">Agregar tarea</button>
+    <br><br>
+    <p id="mensajeError"></p>
+    
+    <ul id="listaTareas"></ul>
+
+    <hr>
+
+    <h1>Ejercicio 2: Contador</h1>
+    
+    <h2 id="numeroContador">0</h2>
+    
+    <button id="btnIncrementar">+</button>
+    <button id="btnDecrementar">-</button>
+    <button id="btnReset">Reset</button>
+
+    <hr>
+
+    <h1>Ejercicio 3: Tienda de Productos</h1>
+    <input type="text" id="filtroProducto" placeholder="Buscar producto por nombre...">
+    <br><br>
+    <button id="btnAgregarCarrito">Agregar al carrito</button>
+    <p id="contadorCarrito">Productos en el carrito: 0</p>
+    <p id="mensajeSinResultados"></p>
+    <div id="listaProductos"></div>
+
+    <script>
+        const campoTexto = document.getElementById('campoTexto');
+        const btnAgregar = document.getElementById('btnAgregar');
+        const listaTareas = document.getElementById('listaTareas');
+        const mensajeError = document.getElementById('mensajeError');
+
+        function agregarTarea() {
+            const texto = campoTexto.value;
+            if (texto === '') {
+                mensajeError.textContent = 'Error: La tarea está vacía';
+                return; 
+            }
+            
+            mensajeError.textContent = '';
+            const nuevaTarea = document.createElement('li');
+            nuevaTarea.textContent = texto;
+            const btnEliminar = document.createElement('button');
+            btnEliminar.textContent = 'Eliminar';
+            nuevaTarea.appendChild(btnEliminar);
+            listaTareas.appendChild(nuevaTarea);
+            campoTexto.value = '';
+            nuevaTarea.addEventListener('click', function() {
+                if (nuevaTarea.style.textDecoration === 'line-through') {
+                    nuevaTarea.style.textDecoration = 'none';
+                } else {
+                    nuevaTarea.style.textDecoration = 'line-through';
+                }
+            });
+            
+            btnEliminar.addEventListener('click', function() {
+                listaTareas.removeChild(nuevaTarea);
+            });
+        }
+        
+        btnAgregar.addEventListener('click', agregarTarea);
+
+        const numeroContador = document.getElementById('numeroContador');
+        const btnIncrementar = document.getElementById('btnIncrementar');
+        const btnDecrementar = document.getElementById('btnDecrementar');
+        const btnReset = document.getElementById('btnReset');
+        let numero = 0;
+        
+        function actualizarColor() {
+            if (numero > 0) {
+                numeroContador.style.color = 'green';
+            } else if (numero < 0) {
+                numeroContador.style.color = 'red';
+            } else {
+                numeroContador.style.color = 'black';
+            }
+        }
+        
+        btnIncrementar.addEventListener('click', function() {
+            numero = numero + 1; 
+            numeroContador.textContent = numero;
+            actualizarColor();
+        });
+        
+        btnDecrementar.addEventListener('click', function() {
+            numero = numero - 1; 
+            numeroContador.textContent = numero;
+            actualizarColor();
+        });
+        btnReset.addEventListener('click', function() {
+            numero = 0;
+            numeroContador.textContent = numero;
+            actualizarColor();
+        });
+
+        const productos = [
+            { nombre: 'Laptop', precio: 1200, imagen: '💻' },
+            { nombre: 'Mouse', precio: 25, imagen: '🖱️' },
+            { nombre: 'Teclado', precio: 80, imagen: '⌨️' },
+            { nombre: 'Monitor', precio: 300, imagen: '🖥️' },
+            { nombre: 'Audifonos', precio: 50, imagen: '🎧' }
+        ];
+        
+        const filtroProducto = document.getElementById('filtroProducto');
+        const btnAgregarCarrito = document.getElementById('btnAgregarCarrito');
+        const contadorCarrito = document.getElementById('contadorCarrito');
+        const mensajeSinResultados = document.getElementById('mensajeSinResultados');
+        const listaProductos = document.getElementById('listaProductos');
+        let productosEnCarrito = 0;
+        
+        function mostrarProductos(productosFiltrados) {
+            listaProductos.innerHTML = '';
+            if (productosFiltrados.length === 0) {
+                mensajeSinResultados.textContent = 'No se encontraron productos';
+                return;
+            } else {
+                mensajeSinResultados.textContent = '';
+            }
+            for (let i = 0; i < productosFiltrados.length; i++) {
+                const producto = productosFiltrados[i];
+                const divProducto = document.createElement('div');
+                divProducto.innerHTML = 
+                    '<h3>' + producto.imagen + ' ' + producto.nombre + '</h3>' +
+                    '<p>Precio: $' + producto.precio + '</p>' +
+                    '<hr>';
+                listaProductos.appendChild(divProducto);
+            }
+        }
+
+        mostrarProductos(productos);
+        filtroProducto.addEventListener('input', function() {
+            const textoBusqueda = filtroProducto.value.toLowerCase();
+            const productosFiltrados = [];
+            
+            for (let i = 0; i < productos.length; i++) {
+                const nombreProducto = productos[i].nombre.toLowerCase();
+                if (nombreProducto.includes(textoBusqueda)) {
+                    productosFiltrados.push(productos[i]);
+                }
+            }
+            mostrarProductos(productosFiltrados);
+        });
+        
+        btnAgregarCarrito.addEventListener('click', function() {
+            productosEnCarrito = productosEnCarrito + 1;
+            contadorCarrito.textContent = 'Productos en el carrito: ' + productosEnCarrito;
+        });
+        
+    </script>
+</body>
+</html>

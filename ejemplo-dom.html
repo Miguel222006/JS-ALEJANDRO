@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo DOM - Manipulación de Elementos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        
+        .seccion {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        #lista-tareas {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #lista-tareas li {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .btn-eliminar {
+            background: #e74c3c;
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+        
+        .btn-eliminar:hover {
+            background: #c0392b;
+        }
+        
+        #mensaje {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .texto-resultado {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="titulo">🎯 Ejemplos de Manipulación del DOM</h1>
+        
+        <!-- Ejemplo 1: Cambiar texto -->
+        <div class="seccion">
+            <h3>1. Cambiar Texto de un Elemento</h3>
+            <p id="parrafo1">Este es el texto original</p>
+            <button onclick="cambiarTexto()">Cambiar Texto</button>
+            <button onclick="restaurarTexto()">Restaurar</button>
+        </div>
+        
+        <!-- Ejemplo 2: Cambiar estilos -->
+        <div class="seccion">
+            <h3>2. Cambiar Estilos CSS</h3>
+            <div id="caja" style="width: 100px; height: 100px; background: #3498db; margin: 10px auto; border-radius: 10px; transition: all 0.3s;"></div>
+            <button onclick="cambiarColor()">Cambiar Color</button>
+            <button onclick="agrandar()">Agrandar</button>
+            <button onclick="achicar()">Achicar</button>
+        </div>
+        
+        <!-- Ejemplo 3: Agregar elementos dinámicamente -->
+        <div class="seccion">
+            <h3>3. Lista de Tareas Dinámica</h3>
+            <input type="text" id="nuevaTarea" placeholder="Escribe una tarea...">
+            <button onclick="agregarTarea()">➕ Agregar Tarea</button>
+            <ul id="lista-tareas"></ul>
+        </div>
+        
+        <!-- Ejemplo 4: Mostrar/Ocultar elementos -->
+        <div class="seccion">
+            <h3>4. Mostrar/Ocultar Contenido</h3>
+            <button onclick="toggleMensaje()">Mostrar/Ocultar Mensaje</button>
+            <div id="mensaje" style="display: none; background: #2ecc71; color: white;">
+                ¡Hola! Este mensaje aparece y desaparece 👋
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ejemplo 1: Cambiar texto
+        function cambiarTexto() {
+            document.getElementById('parrafo1').textContent = '¡El texto ha sido cambiado con JavaScript! 🎉';
+            document.getElementById('parrafo1').style.color = '#e74c3c';
+        }
+        
+        function restaurarTexto() {
+            document.getElementById('parrafo1').textContent = 'Este es el texto original';
+            document.getElementById('parrafo1').style.color = '#2c3e50';
+        }
+        
+        // Ejemplo 2: Cambiar estilos
+        const colores = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'];
+        let colorActual = 0;
+        
+        function cambiarColor() {
+            colorActual = (colorActual + 1) % colores.length;
+            document.getElementById('caja').style.backgroundColor = colores[colorActual];
+        }
+        
+        function agrandar() {
+            let caja = document.getElementById('caja');
+            let anchoActual = parseInt(caja.style.width);
+            if (anchoActual < 300) {
+                caja.style.width = (anchoActual + 20) + 'px';
+                caja.style.height = (anchoActual + 20) + 'px';
+            } else {
+                alert('¡La caja ha alcanzado su tamaño máximo! 📦');
+            }
+        }
+        
+        function achicar() {
+            let caja = document.getElementById('caja');
+            let anchoActual = parseInt(caja.style.width);
+            if (anchoActual > 50) {
+                caja.style.width = (anchoActual - 20) + 'px';
+                caja.style.height = (anchoActual - 20) + 'px';
+            }
+        }
+        
+        // Ejemplo 3: Agregar elementos dinámicamente CON PERSISTENCIA
+        // Función para guardar tareas en localStorage
+        function guardarTareas() {
+            let tareas = [];
+            let listaTareas = document.querySelectorAll('#lista-tareas li span');
+            listaTareas.forEach(function(span) {
+                tareas.push(span.textContent);
+            });
+            localStorage.setItem('tareas', JSON.stringify(tareas));
+        }
+        
+        // Función para cargar tareas desde localStorage
+        function cargarTareas() {
+            let tareasGuardadas = localStorage.getItem('tareas');
+            if (tareasGuardadas) {
+                let tareas = JSON.parse(tareasGuardadas);
+                tareas.forEach(function(textoTarea) {
+                    crearElementoTarea(textoTarea);
+                });
+            }
+        }
+        
+        // Función para crear el elemento visual de la tarea
+        function crearElementoTarea(textoTarea) {
+            let li = document.createElement('li');
+            
+            let span = document.createElement('span');
+            span.textContent = textoTarea;
+            
+            let btnEliminar = document.createElement('button');
+            btnEliminar.textContent = '🗑️ Eliminar';
+            btnEliminar.className = 'btn-eliminar';
+            btnEliminar.onclick = function() {
+                li.remove();
+                guardarTareas(); // Guardar después de eliminar
+            };
+            
+            li.appendChild(span);
+            li.appendChild(btnEliminar);
+            
+            document.getElementById('lista-tareas').appendChild(li);
+        }
+        
+        function agregarTarea() {
+            let input = document.getElementById('nuevaTarea');
+            let textoTarea = input.value.trim();
+            
+            if (textoTarea === '') {
+                alert('Por favor escribe una tarea');
+                return;
+            }
+            
+            crearElementoTarea(textoTarea);
+            guardarTareas(); // Guardar después de agregar
+            
+            input.value = '';
+        }
+        
+        // Cargar tareas cuando se carga la página
+        window.addEventListener('load', function() {
+            cargarTareas();
+        });
+        
+        // Permitir agregar tarea con Enter
+        document.getElementById('nuevaTarea').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                agregarTarea();
+            }
+        });
+        
+        // Ejemplo 4: Mostrar/Ocultar
+        function toggleMensaje() {
+            let mensaje = document.getElementById('mensaje');
+            if (mensaje.style.display === 'none') {
+                mensaje.style.display = 'block';
+            } else {
+                mensaje.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
