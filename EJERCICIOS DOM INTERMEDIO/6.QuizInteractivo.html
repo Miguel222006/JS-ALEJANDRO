@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interactivo - Programación DOM</title>
+    <link rel="stylesheet" href="6.QuizInteractivo.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Quiz de Programación DOM</h1>
+        
+        <div class="info-superior">
+            <div class="contador">
+                Pregunta <span id="numeroPregunta">1</span> de <span id="totalPreguntas">15</span>
+            </div>
+            <div class="puntos">
+                Correctas: <span id="correctas">0</span>
+            </div>
+        </div>
+        
+        <div class="barra-progreso">
+            <div id="progreso" class="progreso"></div>
+        </div>
+        
+        <div id="quizContenedor" class="quiz-contenedor">
+            <h2 id="pregunta" class="pregunta"></h2>
+            
+            <div id="opciones" class="opciones"></div>
+            
+            <div id="feedback" class="feedback oculto"></div>
+            
+            <button id="btnSiguiente" class="btn-siguiente oculto">Siguiente</button>
+        </div>
+        
+        <div id="resultado" class="resultado oculto">
+            <h2>¡Quiz Completado!</h2>
+            <p class="puntuacion-final">Respuestas correctas: <span id="resultadoFinal">0</span> / 15</p>
+            <p class="porcentaje">Porcentaje: <span id="porcentaje">0</span>%</p>
+            <button id="btnReiniciar" class="btn-reiniciar">Reiniciar Quiz</button>
+        </div>
+    </div>
+
+    <script src="6.QuizInteractivo.js"></script>
+</body>
+</html>
