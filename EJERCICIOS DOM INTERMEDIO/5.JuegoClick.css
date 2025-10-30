@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contenedor {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.puntuacion {
+    color: #4CAF50;
+}
+
+.tiempo {
+    color: #FF5722;
+}
+
+.btn-iniciar, .btn-reiniciar {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-iniciar:hover, .btn-reiniciar:hover {
+    background-color: #45a049;
+}
+
+.area-juego {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    margin-top: 20px;
+}
+
+.objetivo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #FF5722;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.objetivo:hover {
+    transform: scale(1.1);
+}
+
+.objetivo:active {
+    transform: scale(0.95);
+}
+
+.resultado {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.resultado h2 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.resultado p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .area-juego {
+        height: 300px;
+    }
+    
+    .objetivo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .info {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Clic Rápido</title>
+    <link rel="stylesheet" href="5.JuegoClick.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Juego de Clic Rápido</h1>
+        
+        <div class="info">
+            <div class="puntuacion">
+                <p>Puntos: <span id="puntos">0</span></p>
+            </div>
+            <div class="tiempo">
+                <p>Tiempo: <span id="tiempo">30</span>s</p>
+            </div>
+        </div>
+        
+        <button id="btnIniciar" class="btn-iniciar">Iniciar Juego</button>
+        
+        <div id="areaJuego" class="area-juego">
+            <div id="objetivo" class="objetivo oculto"></div>
+        </div>
+        
+        <div id="resultado" class="resultado oculto">
+            <h2>¡Juego Terminado!</h2>
+            <p>Tu puntuación final es: <span id="puntosFinal">0</span></p>
+            <button id="btnReiniciar" class="btn-reiniciar">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="5.JuegoClick.js"></script>
+</body>
+</html>
