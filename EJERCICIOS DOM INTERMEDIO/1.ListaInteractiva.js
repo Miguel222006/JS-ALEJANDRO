@@ -1,4 +1,3 @@
-// Cargar tareas al iniciar
 document.addEventListener('DOMContentLoaded', cargarTareas);
 
 const inputTarea = document.getElementById('inputTarea');
