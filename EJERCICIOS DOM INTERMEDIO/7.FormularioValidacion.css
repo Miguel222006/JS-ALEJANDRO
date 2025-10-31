@@ -108,7 +108,6 @@ input.invalido {
     display: none !important;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .contenedor {
         padding: 25px;

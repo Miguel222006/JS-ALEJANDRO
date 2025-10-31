@@ -9,12 +9,10 @@ const errorContrasena = document.getElementById('errorContrasena');
 
 const mensajeExito = document.getElementById('mensajeExito');
 
-// Validación en tiempo real
 nombre.addEventListener('input', validarNombre);
 correo.addEventListener('input', validarCorreo);
 contrasena.addEventListener('input', validarContrasena);
 
-// Enviar formulario
 formulario.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -26,7 +24,6 @@ formulario.addEventListener('submit', function(e) {
         formulario.classList.add('oculto');
         mensajeExito.classList.remove('oculto');
         
-        // Reiniciar después de 3 segundos
         setTimeout(() => {
             formulario.reset();
             formulario.classList.remove('oculto');
