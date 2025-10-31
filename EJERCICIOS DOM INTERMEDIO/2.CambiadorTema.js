@@ -23,4 +23,4 @@ function cargarTema() {
     if (temaGuardado === 'oscuro') {
         document.body.classList.add('dark-mode');
     }
-}
+} 
