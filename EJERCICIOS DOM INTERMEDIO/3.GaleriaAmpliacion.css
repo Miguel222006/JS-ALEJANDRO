@@ -106,7 +106,6 @@ h1 {
     color: #ff6b6b;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .galeria {
         grid-template-columns: 1fr;
