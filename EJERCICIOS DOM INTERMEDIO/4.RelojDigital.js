@@ -39,4 +39,4 @@ function actualizarFecha() {
 setInterval(actualizarReloj, 1000);
 
 actualizarReloj();
-actualizarFecha();
+actualizarFecha(); 

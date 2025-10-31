@@ -48,7 +48,6 @@ h1 {
     margin-top: 20px;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .contenedor {
         padding: 30px;
