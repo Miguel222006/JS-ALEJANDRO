@@ -12,11 +12,9 @@ let tiempoRestante = 30;
 let juegoActivo = false;
 let temporizador;
 
-// Iniciar juego
 btnIniciar.addEventListener('click', iniciarJuego);
 btnReiniciar.addEventListener('click', reiniciarJuego);
 
-// Clic en el objetivo
 objetivo.addEventListener('click', function() {
     if (juegoActivo) {
         puntos++;

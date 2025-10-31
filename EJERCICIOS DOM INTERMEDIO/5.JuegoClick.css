@@ -111,7 +111,6 @@ h1 {
     display: none !important;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .area-juego {
         height: 300px;
