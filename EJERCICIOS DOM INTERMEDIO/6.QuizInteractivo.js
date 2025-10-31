@@ -179,4 +179,4 @@ btnReiniciar.addEventListener('click', () => {
     cargarPregunta();
 });
 
-cargarPregunta();
+cargarPregunta(); 
